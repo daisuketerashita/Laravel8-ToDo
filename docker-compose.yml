@@ -18,10 +18,10 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_DATABASE: ****
-      MYSQL_USER: ****
-      MYSQL_PASSWORD: ****
-      MYSQL_ROOT_PASSWORD: ****
+      MYSQL_DATABASE: todo
+      MYSQL_USER: daisuke
+      MYSQL_PASSWORD: daisuke
+      MYSQL_ROOT_PASSWORD: daisuke
     ports:
       - "3306:3306"
     volumes:
@@ -29,15 +29,15 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     depends_on:
-      - db
+      - mysql
     environment:
       - PMA_ARBITRARY=1
-      - PMA_HOSTS=db
-      - PMA_USER=docker_user
-      - PMA_PASSWORD=docker_pass
+      - PMA_HOSTS=mysql
+      - PMA_USER=daisuke
+      - PMA_PASSWORD=daisuke
     ports:
       - "3000:80"
     volumes:
-      - ./docker/phpmyadmin/sessions:/sessions
+      - /sessions
 volumes:
   mysql-data:
