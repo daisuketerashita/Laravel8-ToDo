@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\FolderController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use App\Http\Controllers\FolderController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//ホーム画面
+Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::get('/folders/{id}/tasks',[TaskController::class,'index'])->name('tasks.index');
 
